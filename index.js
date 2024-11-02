@@ -236,17 +236,67 @@ const v1 = "tio ben";
 const v2 = "recuerda lo siguiente!";
 const v3 = "un gran poder requiere una gran responsabilidad";
 const v4 = "ten ciudado con el duende verde";
-var peligro1 = true;
-let peligro = prompt("Está Spiderman en Peligro? digite N= NO y S = Si")
+var peligro1 = 0;
+let peligro = "";
+//let peligro = prompt("Está Spiderman en Peligro? digite N= NO y S = Si")
 const estadoPeligro = (estadoPel) => {
-    if (estadoPel.toLocaleUpperCase() == "N") {
-        peligro1 = false;
+    if (estadoPel == 1) {
+        peligro1 = 1;
+    } else if(estadoPel == 2){
+        peligro1 = 2;
     }
     return peligro1
 }
-let estadoSpiderman = estadoPeligro(peligro)
-if (estadoSpiderman == true) {
-    alert(`Como decia el ${v1}, ${v2} ${v4}`)
-} else {
-    alert(`Como decia el ${v1}, ${v3}`)
+
+
+//ingresando en el DOM
+
+const titulo = document.createElement("h1");
+
+titulo.textContent = "Hola Soy Spiderman";
+document.body.appendChild(titulo);
+
+const boton = document.createElement("button");
+boton.innerText = "Peligro";
+boton.style.color = "White";
+boton.style.background = "blue";
+document.body.appendChild(boton)
+
+const boton2 = document.createElement("button");
+boton2.innerText = "No peligro";
+boton2.style.color = "White";
+boton2.style.background = "red";
+document.body.appendChild(boton2)
+
+boton.addEventListener("click", () => {
+    document.body.innerHTML = `<h1> Corre spiderman</h1>`;
+    peligro = 1;
+    console.log (peligro);
+})
+
+boton2.addEventListener("click", () => {
+    document.body.innerHTML = `<h1> Estas seguro</h1>`;
+    peligro = 2;
+    console.log (peligro);
+})
+
+var estadoSpiderman = estadoPeligro(peligro);
+if (estadoSpiderman == 1) {
+    alert(`Como decia el ${v1}, ${v2} ${v4}`);
+} else if (estadoSpiderman == 2){
+    alert(`Como decia el ${v1}, ${v3}`);
 }
+console.log(peligro1)
+
+const botonNombre = document.createElement("button");
+botonNombre.innerText="nombre";
+botonNombre.addEventListener("click", ()=>{
+    let entrada = document.getElementById("name");
+    let valorEntrada = entrada.value;
+    if (valorEntrada.trim().length == 0){
+        alert("No se ha digitado valor alguno");
+    } else {
+        alert(`Se ha digitado ${valorEntrada}`);
+    }
+})
+document.body.appendChild(botonNombre);
