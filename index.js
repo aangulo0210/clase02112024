@@ -143,14 +143,110 @@ if (guardar1>guardar2) {
 guardar1 = 0;
 
 for (let i = 0; i < lista1.length; i++) {
-    if (lista1[i]>guardar1) {
+    if (lista1[i] > guardar1) {
         guardar1 = lista1[i];
-    }  
+    }
 }
 for (let i = 0; i < lista2.length; i++) {
-    if (lista2[i]>guardar1) {
+    if (lista2[i] > guardar1) {
         guardar1 = lista2[i];
-    }  
+    }
 }
-alert(`El valor mayor es ${guardar1}`)
+console.log(`El valor mayor es ${guardar1}`)
 
+//for of pendiete
+
+//for in
+
+let auto = {
+    marca: "mazda",
+    modelo: "2020",
+    referencia: "Mazda 2",
+    valor: "50000000"
+}
+
+for (carros in auto) {
+    console.log(carros)
+}
+for (carros in auto) {
+    console.log(`${carros}: ${auto[carros]}`)
+}
+
+// Funciones
+
+const precioOrignal = 1000;
+const porcentajeDeDescuento = 25;
+
+function calcularDescuento(precioProducto, descuento) {
+    const resultadoDescuento = (precioProducto * descuento) / 100;
+    const precioConDescuento = precioProducto - resultadoDescuento;
+    return precioConDescuento;
+}
+
+const precioFinal = calcularDescuento(precioOrignal, porcentajeDeDescuento);
+console.log(`Precio final a pagar es: ${precioFinal}`)
+
+//función Flecha
+
+const flecha = (name) => {
+
+    return `hola ${name}`;
+}
+
+let almacen = "0";
+function calcularMayor(numeros1, numeros2) {
+    for (let i = 0; i < numeros1.length; i++) {
+        if (numeros1[i] > almacen) {
+            almacen = numeros1[i];
+        }
+    }
+    for (let i = 0; i < numeros2.length; i++) {
+        if (numeros2[i] > almacen) {
+            almacen = numeros2[i];
+        }
+    }
+    return almacen
+}
+let numeroMayor = calcularMayor(lista1, lista2);
+console.log(`El numero mayor utilizando funciones es: ${numeroMayor}`)
+
+let almacen1 = 0;
+const calcularMayorFlecha = (numero1, numero2) => {
+    for (let i = 0; i < numero1.length; i++) {
+        if (numero1[i] > almacen1) {
+            almacen1 = numero1[i];
+        }
+    }
+    for (let i = 0; i < numero2.length; i++) {
+        if (numero2[i] > almacen1) {
+            almacen1 = numero2[i];
+        }
+    }
+    return almacen1
+}
+
+let numeroMayor2 = calcularMayor(lista1, lista2);
+console.log(`El numero mayor utilizando funcion flecha es: ${numeroMayor2}`)
+
+// 3 vectores, v1 v2 y v3 tienen 3 string, Si la variable spiderman está en peligro debe lanzar el mensaje 
+//"como decía el tio ben, ten ciudado con el duende verde"
+// si no esta en peligro escribir "como decia el tio ben, un gran poder requiere una gran resposabilidad"
+// con funciones flecha
+const v1 = "tio ben";
+const v2 = "recuerda lo siguiente!";
+const v3 = "un gran poder requiere una gran responsabilidad";
+const v4 = "ten ciudado con el duende verde";
+var peligro1 = true;
+let peligro = prompt("Está Spiderman en Peligro? digite N= NO y S = Si")
+const estadoPeligro = (estadoPel) => {
+    if (estadoPel.toLocaleUpperCase() == "N") {
+        peligro1 = false;
+    }
+    return peligro1
+}
+let estadoSpiderman = estadoPeligro(peligro)
+if (estadoSpiderman == true) {
+    alert(`Como decia el ${v1}, ${v2} ${v4}`)
+} else {
+    alert(`Como decia el ${v1}, ${v3}`)
+}
